@@ -29,16 +29,96 @@
         white-space: normal;
       }
     </style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+
+      $.ajax({
+        url: "https://geolocation-db.com/jsonp",
+        jsonpCallback: "callback",
+        dataType: "jsonp",
+        success: function (location) {
+          var data = new Date(),
+            dia = data.getDate().toString().padStart(2, '0'),
+            mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+            ano = data.getFullYear();
+          
+          data = dia + '/' + mes + '/' + ano;
+
+          //AQUI altera o texto ANTES do nome da cidade
+          textoAntesCidade = 'Você e algumas pessoas próximo a ';
+          //AQUI altera o texto DEPOIS do nome da cidade
+          textoDepoisCidade = ' foram selecionadas para ver este vídeo até o dia ';
+
+          mostrarData = true; //SE não quiser que a data apareça é só mudar o valor 'true' para 'false' e vice-versa para mostrar novamente 
+          
+          if(location.city)
+            $('#container-cidade').html(textoAntesCidade + location.city + textoDepoisCidade + (mostrarData ? data : ''));
+        }
+      });
+
+  </script>
+  <style>
+    #container-cidade {
+      padding: 1rem;
+      width: 100%;
+    
+      /* AQUI altera a cor da letra */
+      color: #FFFFFF;
+      display: inline-table;
+      /* AQUI altera o tamanho da letra */
+      font-size: 15px;
+      /* AQUI altera a altura da caixa */
+      height: 13px;
+      z-index: 1;
+      position: inherit;
+      top: 0;
+      left: 0;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+  </style>
+    
+    <!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '590358818921721');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=590358818921721&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5WZ69QX8G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S5WZ69QX8G');
+</script>
+</head>
+
+
+
   </head>
   <body>
     
-    <nav class="navbar justify-content-center text-center">
+   <nav class="navbar justify-content-center text-center">
       <span class="lead">
-        <i class="fas fa-exclamation-triangle mr-2"></i>ATENÇÃO: Este vídeo será removido no dia <span id="dia"></span> de <span id="mes"></span>, aproveite enquanto está disponível!
-      </span>
+        <div id="container-cidade">Aguarde um momento...</div>
     </nav>
 
-    <section class="py-5 fsec">
+    <!--<section class="py-5 fsec">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10 text-center">
@@ -47,15 +127,17 @@
           </div>
         </div>
       </div>
-    </section>
+    </section>-->
 
     <section class="py-5 ssec">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10 text-center">
-            <a href="https://bemquemefaz.online/p-01/"><img class="img-fluid" src="play2.png"></a>
+            <h1>"Eu Estava Acima do Peso e Insatisfeita, Mudei Minha Vida Em Menos de 22 Dias..."</h1>
+            <h4>Toque no vídeo AGORA, a apresentação já começou...</h4>
+            <script type="text/javascript" id="scr_62984098460e6a00099b4cb7">var s=document.createElement("script");s.src="https://scripts.converteai.net/1c995eb4-4193-41c9-a9a1-c16ee42a6d24/players/62984098460e6a00099b4cb7/player.js",s.async=!0,document.head.appendChild(s);</script>
             <!-- TROQUE SEU LINK ONDE ESTÁ O DO PROTOCOLOZEROBARRIGA.COM, MANTENDO AS ASPAS -->
-            <a class="btn btn-success btn-lg p-4 mt-5" href="https://bemquemefaz.online/p-01/">QUERO ASSISIR O VÍDEO AGORA!</a>
+            <!--<a class="btn btn-success btn-lg p-4 mt-5" href="https://bemquemefaz.online/p-01/">QUERO ASSISIR O VÍDEO AGORA!</a>-->
           </div>
         </div>
       </div>
